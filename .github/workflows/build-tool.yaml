@@ -3,7 +3,7 @@ name: Build chip-tool
 on:
   push:
     branches:
-      - master
+      - build-tool
     tags:
       - 'v*'
 
