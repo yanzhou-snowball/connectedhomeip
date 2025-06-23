@@ -1,11 +1,6 @@
 name: Build chip-tool
 
 on:
-  push:
-    branches:
-      - v1.4-branch
-    tags:
-      - 'v*'
   workflow_dispatch:
     inputs:
       tag:
@@ -14,7 +9,7 @@ on:
         default: 'v1.4.0.0'
 
 concurrency:
-  group: ${{ github.ref }}-${{ github.workflow }}-${{ (github.event_name == 'pull_request' && github.event.number) || (github.event_name == 'workflow_dispatch' && github.run_number) || github.sha }}
+  group: ${{ github.event.inputs.tag || github.ref }}-${{ github.workflow }}-${{ github.run_number }}
   cancel-in-progress: true
 
 jobs:
