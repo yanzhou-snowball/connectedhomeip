@@ -53,3 +53,8 @@ jobs:
         with:
           name: chip-tool
           path: /tmp/output_binaries/chip-tool_x64
+      - name: Build x64 Chip Cert
+        run: |
+          scripts/run_in_build_env.sh "gn gen out/chipcert_x64 --args='symbol_level=0 is_debug=false chip_crypto=\"boringssl\"'"
+          scripts/run_in_build_env.sh "ninja -C out/chipcert_x64 chip-cert"
+          strip out/chipcert_x64/chip-cert -o /tmp/output_binaries/chip-cert_x64
