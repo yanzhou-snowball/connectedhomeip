@@ -61,5 +61,5 @@ jobs:
       - name: Upload build chip cert
         uses: actions/upload-artifact@v4
         with:
-          name: chip-tool
+          name: chip-cert
           path: /tmp/output_binaries/chip-cert_x64
